@@ -12,10 +12,11 @@ const styles ={
 }
 
 const Exercise = (props) =>{
+    console.log(props.exercises);
     return(
         <Grid container>
           <Grid item sm={4}>
-             <LeftPanel  styles={styles}/>
+             <LeftPanel  styles={styles} propsData={props.exercises}/>
           </Grid>
           <Grid item sm>
               <RightPanel styles={styles}/>
