@@ -1,8 +1,7 @@
-import React from 'react';
+import React,{ Fragment} from 'react';
 import Grid from '@material-ui/core/Grid';
-import LeftPanel from './LeftPanel';
-import RightPanel from './RightPanel';
 import './Scroll.css';
+import { Paper, Typography,List,ListItem,ListItemText } from '@material-ui/core';
 
 const styles ={
     Paper:{
@@ -14,20 +13,59 @@ const styles ={
     }
 }
 
-const Exercise = ({exercises,catergory,exercise}) =>{
+const Exercise = ({
+    exercises,
+    catergory,
+    onSelect,
+    exercise:{
+        id,
+        title ='Welcome!',
+        description ='  Please select list on left panel'
+    }
+  }) =>{
     console.log(catergory);
     return(
         <Grid container>
           <Grid item sm={4}>
-             <LeftPanel  styles={styles} propsData={exercises}
-              propsCategoryData={catergory}
-              prosExercise={exercise}
-             />
+             <Paper style={styles.Paper}>
+                {exercises.map(([group,exercises])=>{
+                    if(!catergory || catergory === group){
+                    return(
+                        <Fragment key={group + 'fragment'}>
+                        <Typography variant="subtitle1" 
+                                    style={{textTransform:'capitalize'}} 
+                                    key={group + 'grps'}>
+                        {group}
+                        </Typography>
+                        <List compoent="ui">
+                            {exercises.map(({id,title})=>{
+                            return(
+                                <ListItem button key={title +'id'}
+                                onClick={()=>onSelect(id)}
+                                >
+                                <ListItemText primary={title}/>
+                            </ListItem>
+                            )
+                            })}
+                        
+                        </List>
+                    </Fragment>
+                    )
+                    }
+                    return null;   
+                })}
+        </Paper>
           </Grid>
           <Grid item sm>
-              <RightPanel styles={styles}
-               prosExercise={exercise}
-              />
+              <Paper style={styles.Paper}>
+                <Typography variant="h4" component="h4" 
+                            gutterBottom>
+                    {title}
+                </Typography>
+                <Typography variant="subtitle1" component="h4">
+                    {description}
+                </Typography>
+            </Paper>
           </Grid>
         </Grid>
     )
