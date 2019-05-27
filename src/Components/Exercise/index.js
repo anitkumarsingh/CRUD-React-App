@@ -23,7 +23,6 @@ const Exercise = ({
         description ='  Please select list on left panel'
     }
   }) =>{
-    console.log(catergory);
     return(
         <Grid container>
           <Grid item sm={4}>
