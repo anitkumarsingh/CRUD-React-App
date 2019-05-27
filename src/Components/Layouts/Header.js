@@ -1,6 +1,7 @@
 import React from 'react';
 import { AppBar , Toolbar, Typography} from '@material-ui/core';
-import CreateBtn from '../Exercise/Dialog/CreateFloatBtn'
+import CreateBtn from '../Exercise/Dialog/CreateFloatBtn';
+import PropTypes from 'prop-types';
 
 const Header = () =>{
     return (
@@ -15,4 +16,7 @@ const Header = () =>{
         </div>
     )
 }
+Header.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
 export default Header;

@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import { 
+        withStyles,
+        Fab,
+        DialogTitle,
+        DialogContentText,
+        DialogContent,
+        DialogActions,
+        Dialog,
+        Button
+     } from '@material-ui/core';
 
-
+const styles = theme =>({
+    buttonst:{
+        position: 'absolute',
+        bottom: '0',
+        right: '20px',
+        top: '530px'
+    } 
+})
 class CreateFloatBtn extends Component{
     state ={
         open:false,  
@@ -18,26 +28,29 @@ class CreateFloatBtn extends Component{
       }
 
     render(){ 
+        const { classes } = this.props;
         return (
         <div>
-            <Fab color="primary" aria-label="Add" onClick={this.handleToggle} >
+            <Fab color="primary" aria-label="Add" onClick={this.handleToggle} 
+                className={classes.buttonst}>
              <AddIcon />
            </Fab>
-           <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
+           <Dialog open={this.state.open} onClose={this.handleClose} 
+                   aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Create</DialogTitle>
                 <DialogContent>
-                <DialogContentText>
-                   Create list of exercises!
-                </DialogContentText>
+                    <DialogContentText>
+                    Create list of exercises!
+                    </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                <Button onClick={this.handleToggle} color="primary">
-                    Close
-                </Button>
+                    <Button onClick={this.handleToggle} color="primary">
+                        Close
+                    </Button>
                 </DialogActions>
            </Dialog>
         </div>
       )
    }
 }
-export default CreateFloatBtn;
+export default withStyles(styles)(CreateFloatBtn);
