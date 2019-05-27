@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -16,12 +16,17 @@ const styles = theme => ({
     },
   });
 
- const Footer = ({ muscles}) =>{
+ const Footer = ({ muscles,onSelect,catergory}) =>{
    console.log(muscles);
+   const index = catergory 
+   ? muscles.findIndex((muscles)=> muscles===catergory) + 1 
+   : 0
+   console.log(index);
      return(
         <Paper >
         <Tabs
-            value={0}
+            value={index}
+            onChange ={(e,index)=>onSelect(index === 0 ? '':muscles[index - 1])}
             indicatorColor="primary"
             textColor="primary"
             centered

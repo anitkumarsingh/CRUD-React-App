@@ -5,7 +5,8 @@ import { muscles,exercises } from '../Store';
 
 class App extends Component{
     state={
-        exercises
+        exercises,
+        category:'all'
     }
     getExercisesByMuscles = () =>{
         return Object.entries(this.state.exercises.reduce((exercises,exercise)=>{
@@ -18,14 +19,24 @@ class App extends Component{
         )
        
     }
+    handleCategoryChange = (category)=>{
+      this.setState({category})
+    }
     render(){
         const exercises= this.getExercisesByMuscles();
-        console.log(exercises);
+        const { category } = this.state
+        console.log(category);
+       
     return(
     <Fragment>
         <Header/>
-        <Exercise exercises={exercises}/>
-        <Footer muscles={muscles}/>
+        <Exercise exercises={exercises}
+          catergory ={category}
+        />
+        <Footer muscles={muscles} 
+         onSelect ={this.handleCategoryChange}
+         catergory ={category}
+         />
     </Fragment>
                 
     )

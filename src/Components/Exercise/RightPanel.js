@@ -7,7 +7,7 @@ export default ({ styles }) =>{
             <Typography variant="h4" component="h4" 
              gutterBottom>Welcome!
              </Typography>
-            <Typography variant="title" component="h4">
+            <Typography variant="subtitle1" component="h4">
                 Please select list on left panel
             </Typography>
        </Paper>

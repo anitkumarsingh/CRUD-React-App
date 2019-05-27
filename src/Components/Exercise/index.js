@@ -14,12 +14,14 @@ const styles ={
     }
 }
 
-const Exercise = (props) =>{
-    console.log(props.exercises);
+const Exercise = ({exercises,catergory}) =>{
+    console.log(catergory);
     return(
-        <Grid container spacing={12}>
+        <Grid container spacing={10}>
           <Grid item sm={4}>
-             <LeftPanel  styles={styles} propsData={props.exercises}/>
+             <LeftPanel  styles={styles} propsData={exercises}
+              propsCategoryData={catergory}
+             />
           </Grid>
           <Grid item sm>
               <RightPanel styles={styles}/>
