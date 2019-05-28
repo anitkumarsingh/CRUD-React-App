@@ -9,7 +9,8 @@ class App extends Component{
         exercise:{}
     }
     getExercisesByMuscles = () =>{
-        return Object.entries(this.state.exercises.reduce((exercises,exercise)=>{
+        return Object.entries(
+         this.state.exercises.reduce((exercises,exercise)=>{
          const { muscles } = exercise;
          exercises[muscles]= exercises[muscles]
          ?[...exercises[muscles],exercise]
@@ -27,12 +28,23 @@ class App extends Component{
             exercise:exercises.find(ex => ex.id === id)
         }))
     }
+    handleExerciseCreate = exercise =>{
+    this.setState(({exercises})=>({
+      exercises:[
+        ...exercises,
+        exercise
+      ]
+    }))
+    }
     render(){
     const exercises= this.getExercisesByMuscles();
     const { category,exercise } = this.state
     return(
     <Fragment>
-        <Header muscles={muscles} />
+        <Header 
+         muscles={muscles} 
+         onExerciseCreate={this.handleExerciseCreate}
+         />
         <Exercise 
           exercises={exercises}
           catergory={category}

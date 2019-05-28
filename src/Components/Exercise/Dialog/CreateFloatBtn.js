@@ -15,7 +15,6 @@ import {
         TextField,
         FormControl,
         InputLabel,
-        FormHelperText,
         Input,
         MenuItem
      } from '@material-ui/core';
@@ -56,20 +55,25 @@ class CreateFloatBtn extends Component{
     handleToggle = () =>{
         this.setState({open:!this.state.open})
       }
-      handleChange = name => event => {
-        this.setState({
-          ...this.state,
-          [name]: event.target.value,
-        });
-      };
       handleChangeText = name =>event =>{
         this.setState({
           exercise:{
            ...this.state.exercise,
            [name]:event.target.value
           }
-         
         })
+      }
+      handleSubmitChange = ()=>{
+       const { exercise } = this.state;
+       this.props.onCreate(exercise);
+       this.setState({
+         open:false,
+         exercise:{
+           title:'',
+           description:'',
+           muscles:''
+         }
+       })
       }
     render(){ 
         const { classes,muscles:categories } = this.props;
@@ -90,14 +94,16 @@ class CreateFloatBtn extends Component{
                    <ThemeProvider theme={theme}>
                         <TextField
                            className={[classes.formControl,classes.margin].join(' ')}
-                           label={title}
+                           label="Title"
+                           value={title}
                            onChange={this.handleChangeText('title')}
                         /><br/>
                          <TextField
                             multiline
                             rowsMax="4"
                             className={[classes.formControl,classes.margin].join(' ')}
-                            label={description}
+                            value={description}
+                            label="Description"
                             onChange={this.handleChangeText('description')}
                         /><br/>
                         <FormControl className={classes.formControl}>
@@ -108,20 +114,18 @@ class CreateFloatBtn extends Component{
                                 onChange={this.handleChangeText('muscles')}
                                 className={[classes.formControl,classes.margin].join(' ')}
                             >
-                                {categories.map((cat)=>{
-                                  return(
-                                    <div key={cat + 'id'}>
-                                    <MenuItem value={cat}>{cat}</MenuItem>
-                                    </div>
-                                  )
-                                })}
+                                {categories.map((cat)=>
+                                    <MenuItem value={cat} key={cat + 'id'}>{cat}</MenuItem>
+                                )}
                             </Select>
-                            <FormHelperText  className={classes.margin}>Select Category</FormHelperText>
                         </FormControl>
                 </ThemeProvider>
                    </form>
                 <DialogActions>
-                    <Button onClick={this.handleToggle} color="primary" outline="true">
+                    <Button  
+                      color="primary" outline="true"
+                      onClick={this.handleSubmitChange}
+                      >
                        Create
                     </Button>
                 </DialogActions>
