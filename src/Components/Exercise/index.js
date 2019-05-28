@@ -52,8 +52,8 @@ const Exercise = ({
                                 >
                                 <ListItemText primary={title}/>
                                 <ListItemSecondaryAction>
-                                    <IconButton edge="end" aria-label="Delete">
-                                        <DeleteIcon onClick={()=>onDelete(id)}/>
+                                    <IconButton edge="end" aria-label="Delete" onClick={()=>onDelete(id)}>
+                                        <DeleteIcon />
                                     </IconButton>
                                 </ListItemSecondaryAction>
                             </ListItem>

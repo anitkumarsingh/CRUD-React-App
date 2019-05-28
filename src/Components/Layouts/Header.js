@@ -6,7 +6,7 @@ const Header = ({muscles,onExerciseCreate}) =>{
     return (
         <div>
             <AppBar position="static">
-                <Toolbar style={{ flexGrow: 1,}}>
+                <Toolbar >
                 <Typography variant="h6">CRUD App
                 </Typography>
                 <CreateBtn muscles={muscles} onCreate={onExerciseCreate} />
