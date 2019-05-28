@@ -1,22 +1,19 @@
 import React from 'react';
 import { AppBar , Toolbar, Typography} from '@material-ui/core';
 import CreateBtn from '../Exercise/Dialog/CreateFloatBtn';
-import PropTypes from 'prop-types';
 
-const Header = () =>{
+const Header = ({muscles}) =>{
     return (
         <div>
             <AppBar position="static">
                 <Toolbar style={{ flexGrow: 1,}}>
                 <Typography variant="h6">CRUD App
                 </Typography>
-                <CreateBtn />
+                <CreateBtn muscles={muscles} />
                 </Toolbar>
             </AppBar>
         </div>
     )
 }
-Header.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+
 export default Header;

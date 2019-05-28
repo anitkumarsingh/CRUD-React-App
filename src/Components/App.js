@@ -28,13 +28,11 @@ class App extends Component{
         }))
     }
     render(){
-        const exercises= this.getExercisesByMuscles();
-        const { category,exercise } = this.state
-        console.log(category);
-       
+    const exercises= this.getExercisesByMuscles();
+    const { category,exercise } = this.state
     return(
     <Fragment>
-        <Header/>
+        <Header muscles={muscles} />
         <Exercise 
           exercises={exercises}
           catergory={category}
