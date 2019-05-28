@@ -4,8 +4,11 @@ import './Scroll.css';
 import { Paper, 
          Typography,
          List,ListItem,
-         ListItemText 
+         ListItemText,
+         ListItemSecondaryAction,
+         IconButton 
         } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const styles ={
     Paper:{
@@ -21,6 +24,7 @@ const Exercise = ({
     exercises,
     catergory,
     onSelect,
+    onDelete,
     exercise:{
         id,
         title ='Welcome!',
@@ -47,6 +51,11 @@ const Exercise = ({
                                 onClick={()=>onSelect(id)}
                                 >
                                 <ListItemText primary={title}/>
+                                <ListItemSecondaryAction>
+                                    <IconButton edge="end" aria-label="Delete">
+                                        <DeleteIcon onClick={()=>onDelete(id)}/>
+                                    </IconButton>
+                                </ListItemSecondaryAction>
                             </ListItem>
                             )
                             })}

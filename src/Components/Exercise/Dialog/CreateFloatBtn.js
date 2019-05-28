@@ -65,7 +65,10 @@ class CreateFloatBtn extends Component{
       }
       handleSubmitChange = ()=>{
        const { exercise } = this.state;
-       this.props.onCreate(exercise);
+       this.props.onCreate({
+         ...exercise,
+         id:exercise.title.toLocaleLowerCase().replace(/ /g,'-')
+        });
        this.setState({
          open:false,
          exercise:{
