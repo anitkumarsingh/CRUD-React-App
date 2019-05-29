@@ -6,7 +6,7 @@ import { muscles,exercises } from '../Store';
 class App extends Component{
     state={
         exercises,
-        exercise:{}
+        exercise:{},
     }
     getExercisesByMuscles = () =>{
       const initialExeriseData = muscles.reduce((exercises,category)=>({
@@ -45,9 +45,15 @@ class App extends Component{
        exercises:exercises.filter((ex)=>ex.id !== id)
       }))
     }
+    editHandleChange = id =>{
+      this.setState(({ exercises })=>({
+        exercise:exercises.find(ex => ex.id === id),
+        editMode:true
+    }))
+    }
     render(){
     const exercises= this.getExercisesByMuscles();
-    const { category,exercise } = this.state
+    const { category,exercise,editMode } = this.state
     return(
     <Fragment>
         <Header 
@@ -60,6 +66,8 @@ class App extends Component{
           onSelect={this.handleExerciseChange}
           exercise={exercise}
           onDelete={this.onDeleteHandle}
+          onEditMode={this.editHandleChange}
+          editMode={editMode}
         />
         <Footer 
           muscles={muscles} 

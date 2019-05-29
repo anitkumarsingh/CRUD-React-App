@@ -9,6 +9,7 @@ import { Paper,
          IconButton 
         } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Edit from '@material-ui/icons/Edit';
 
 const styles ={
     Paper:{
@@ -25,6 +26,8 @@ const Exercise = ({
     catergory,
     onSelect,
     onDelete,
+    onEditMode,
+    editMode,
     exercise:{
         id,
         title ='Welcome!',
@@ -52,6 +55,10 @@ const Exercise = ({
                                 >
                                 <ListItemText primary={title}/>
                                 <ListItemSecondaryAction>
+                                    <IconButton edge="end" aria-label="Edit" onClick={()=>onEditMode(id)}>
+                                        <Edit />
+                                    </IconButton>
+                               
                                     <IconButton edge="end" aria-label="Delete" onClick={()=>onDelete(id)}>
                                         <DeleteIcon />
                                     </IconButton>
@@ -69,7 +76,12 @@ const Exercise = ({
         </Paper>
           </Grid>
           <Grid item sm>
-              <Paper style={styles.Paper}>
+              {editMode ? (
+                   <Paper style={styles.Paper}>
+                    Hello
+               </Paper>
+              ):(
+                <Paper style={styles.Paper}>
                 <Typography variant="h4" component="h4" 
                             gutterBottom>
                     {title}
@@ -78,6 +90,8 @@ const Exercise = ({
                     {description}
                 </Typography>
             </Paper>
+              )}
+             
           </Grid>
         </Grid>
     )
