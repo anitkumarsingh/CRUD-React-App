@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/CRUD-React-App/static/css/main.09431ba1.chunk.css",
+    "main.js": "/CRUD-React-App/static/js/main.b373c6a0.chunk.js",
+    "main.js.map": "/CRUD-React-App/static/js/main.b373c6a0.chunk.js.map",
+    "runtime~main.js": "/CRUD-React-App/static/js/runtime~main.8a7bbb38.js",
+    "runtime~main.js.map": "/CRUD-React-App/static/js/runtime~main.8a7bbb38.js.map",
+    "static/js/2.42d5eed0.chunk.js": "/CRUD-React-App/static/js/2.42d5eed0.chunk.js",
+    "static/js/2.42d5eed0.chunk.js.map": "/CRUD-React-App/static/js/2.42d5eed0.chunk.js.map",
+    "index.html": "/CRUD-React-App/index.html",
+    "precache-manifest.60bf0f9a9570285bd2466af85214dd36.js": "/CRUD-React-App/precache-manifest.60bf0f9a9570285bd2466af85214dd36.js",
+    "service-worker.js": "/CRUD-React-App/service-worker.js",
+    "static/css/main.09431ba1.chunk.css.map": "/CRUD-React-App/static/css/main.09431ba1.chunk.css.map"
+  }
+}
